@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item</title>
+</head>
+<body>
+    <div>
+        <h1>Category</h1>
+        <table>
+            <tr>
+                <tr>
+                    <th> id </th>
+                    <th> name </th>
+                </tr>
+            </tr>
+            <form method="post">
+                <tr>
+                    {% csrf_token %}
+                    <td>
+                        <input id="id" type="number" value="{{category.id}}" disabled>
+                    </td>
+                    <td>
+                        <input id="name" type="text" name="name" value="{{category.name}}" required>
+                    </td>
+                    <td>
+                        <button><a href="{% url 'myApp:delete-category' category.id %}">DELETE</a></button>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">SAVE</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+    <br>
+    <a href="{% url 'myApp:list-category' %}">ย้อนกลับ</a>
+</body>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+</style>
+</html>

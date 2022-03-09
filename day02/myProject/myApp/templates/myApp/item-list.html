@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item</title>
+</head>
+<body>
+    <div>
+        <h1>ITEMS</h1>
+        <table>
+            <tr>
+                <tr>
+                    <th> id </th>
+                    <th> name </th>
+                </tr>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td> <a href="{% url 'myApp:retrive-item' item.id %}">{{item.id}}</a> </td>
+                    <td>{{item.name}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h2>Create Items</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="category">category : </label>
+            <select name="category" id="category" required>
+                {% for category in categorys %}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="category">name : </label>
+            <input type="text" name="name" required>
+            <br>
+            <button type="submit">SAVE</button>
+        </form>
+    </div>
+</body>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+</style>
+</html>
